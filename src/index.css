@@ -6,8 +6,13 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background-color: #6FC38E;
+  color: whitesmoke;
+}
+
 body {
   font-family: 'Roboto Mono', sans-serif;
-  background-color: #050705;
+  background-color: #0f0f0f;
   color: #6FC38E;
 }

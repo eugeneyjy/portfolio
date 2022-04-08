@@ -42,7 +42,7 @@ function Home() {
     }, [lineCount, blink]);
 
     return(
-        <div className='terminal-container'>
+        <div className='home-container'>
             <p className='title'>Hi, my name is</p>
             <p className='name'>EUGENE YONG</p>
             <p className='career'>I am a Computer Science Student</p>
