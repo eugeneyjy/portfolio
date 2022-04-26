@@ -1,0 +1,73 @@
+.project-container {
+    font-family: 'VT323', monospace;
+    width: 700px;
+    height: 400px;
+    border: 1px solid #6FC38E;
+    box-shadow: 15px 15px #0d0d0d;
+}
+
+.inner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.project-title {
+    font-weight: 400;
+    font-size: 58px;
+    text-transform: uppercase;
+}
+
+.project-content {
+    display: flex;
+    font-size: 28px;
+    height: 65%;
+}
+
+.project-content p {
+    padding-bottom: 15px;
+}
+
+.instruction {
+    color: gray;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: none;
+}
+
+img {
+    width: 40%;
+    object-fit: contain;
+    object-position: center top;
+}
+
+button {
+    box-shadow: -5px 0 0 0 white,
+                5px 0 0 0 white,
+                0 -5px 0 0 white,
+                0 5px 0 0 white;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 0%;
+    margin: 10px 0px;
+    align-self: center;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #e1e1e1;
+}
+
+.github-url a {
+    text-decoration: none;
+}
+
+.github-url a:visited {
+    color: black;
+    text-decoration: none;
+}

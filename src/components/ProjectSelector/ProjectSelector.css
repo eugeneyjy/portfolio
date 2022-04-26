@@ -1,0 +1,35 @@
+.files-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    width: 300px;
+    height: 400px;
+    border: 1px solid #6FC38E;
+    margin-left: 10px;
+    padding: 20px 30px;
+}
+
+.file {
+    width: 100px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.selected.file {
+    background-color: white;
+}
+
+.file:hover {
+    background-color: white;
+}
+
+.file-name {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    text-align: center;
+    user-select: none;
+}

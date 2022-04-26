@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import './Home.css';
 
 function Home() {
-    const contentText = [
+    const contentText = useMemo(()=>[
                         'Welcome to my portfolio. I\'m an undergraduate senior computer science student that is graduating in Spring 2022. Feel free to navigate to different pages to discover facts about me and the projects I have done.',
-                        'Please consider contact me if there is any vacancy that fit with my knowledge and skills. I\'m looking to start my career as a Fullstack Developer or Backend Developer.'
-                        ];
+                        'Please consider contact me if there is any vacancy that fit with my knowledge and skills. I\'m looking to start my career as a FullStack Developer or Backend Developer.'
+                        ], []);
     const paragraphLines = contentText.length;
     const [ typeWriterText, setTypeWriterText ] = useState('');
     const [ currTextLength, setCurrTextLength ] = useState(0);
@@ -18,18 +18,18 @@ function Home() {
             if(lineCount < paragraphLines) {
                 if(currTextLength >= contentText[lineCount].length) {
                     if(lineCount !== paragraphLines-1) {
-                        setTypeWriterText(typeWriterText+'\n');
+                        setTypeWriterText(prevText => prevText + '\n');
                     }
                     setCurrTextLength(0);
                     setLineCount(lineCount+1);
                 } else {
-                    setTypeWriterText(typeWriterText+contentText[lineCount][currTextLength]);
+                    setTypeWriterText(prevText => prevText+contentText[lineCount][currTextLength]);
                     setCurrTextLength(currTextLength+1);
                 }
             }
         }, parseInt(Math.random() * (50-30) + 30));
         return () => clearTimeout(timeout1);
-    }, [lineCount, currTextLength]); 
+    }, [lineCount, currTextLength, paragraphLines, contentText]); 
 
     useEffect(() =>{
         if(lineCount < paragraphLines) {
@@ -39,7 +39,7 @@ function Home() {
             setBlink((prev) => !prev);
           }, 500);
           return () => clearTimeout(timeout2);
-    }, [lineCount, blink]);
+    }, [lineCount, blink, paragraphLines]);
 
     return(
         <div className='home-container'>
