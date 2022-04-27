@@ -32,10 +32,11 @@
 }
 
 .instruction {
+    font-family: 'Roboto Mono', sans-serif;
     color: gray;
     margin-top: 8px;
     text-align: center;
-    font-size: 18px;
+    font-size: 12px;
     text-transform: none;
 }
 
