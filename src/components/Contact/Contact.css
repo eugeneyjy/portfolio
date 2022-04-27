@@ -1,0 +1,52 @@
+.contact-wrapper {
+    position: absolute;
+    font-family: 'VT323', monospace;
+    font-weight: 500;
+    width: 600px;
+    height: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 1px solid #6FC38E;
+}
+
+.contact-header {
+    padding-top: 15px;
+    text-align: center;
+    text-decoration:dotted;
+    text-transform: uppercase;
+}
+
+.contact-form {
+    padding: 15px 15px 0px 15px;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+input[type=text], textarea {
+    font-family: 'Roboto Mono', sans-serif;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: none;
+}
+
+input[type=text]:focus, textarea:focus {
+    outline: none;
+    border: 2px solid #6FC38E;
+}
+
+textarea {
+    height: 210px;
+}
+
+.submit-button {
+    margin: 15px 40%;
+    width: 20%;
+    cursor: pointer;
+}
