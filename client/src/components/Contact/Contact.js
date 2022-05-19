@@ -10,7 +10,7 @@ function Contact() {
     async function sendMail(e) {
         e.preventDefault();
         try {
-            const res = await fetch(`${process.env.API_URL}/sendmail`, {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/sendmail`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
