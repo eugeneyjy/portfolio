@@ -30,7 +30,7 @@ transporter.verify((error, success) => {
 });
 
 app.get('/', (req, res, next) => {
-    req.status(200).send({
+    res.status(200).send({
         msg: "Heroku GET test"
     });
 });
