@@ -29,6 +29,12 @@ transporter.verify((error, success) => {
     }
 });
 
+app.get('/', (req, res, next) => {
+    req.status(200).send({
+        msg: "Heroku GET test"
+    });
+});
+
 app.post('/sendmail', (req, res, next) => {
     const name = req.body.name;
     const subject = req.body.subject;
