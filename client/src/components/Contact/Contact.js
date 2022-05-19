@@ -9,20 +9,23 @@ function Contact() {
 
     async function sendMail(e) {
         e.preventDefault();
-        console.log({ name, subject, message });
-        const res = await fetch('http://localhost:8000/sendmail', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, subject, message })
-        });
-
-        if(res.status === 200) {
-            alert("Message Sent.");
-        } else if(res.status === 500) {
-            alert("Failed to send message");
-        }
+        try {
+            const res = await fetch(`${process.env.API_URL}/sendmail`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, subject, message })
+            });
+    
+            if(res.status === 200) {
+                alert("Message Sent.");
+            } else if(res.status === 500) {
+                alert("Failed to send message");
+            }
+        } catch (err) {
+            alert(err);
+        }   
     }
 
     return (
