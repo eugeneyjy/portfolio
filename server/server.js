@@ -53,7 +53,7 @@ app.post('/sendmail', (req, res, next) => {
         if(error) {
             console.log(error);
             res.status(500).send({
-                status: 'fail'
+                error: error
             });
         } else {
             res.status(200).send({
