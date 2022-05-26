@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Toast from '../Toast/Toast';
+import { RotatingLines } from 'react-loader-spinner';
 import './Contact.css';
 
 function Contact() {
@@ -6,8 +8,13 @@ function Contact() {
     const [ email, setEmail ] = useState('');
     const [ subject, setSubject ] = useState('');
     const [ message, setMessage ] = useState('');
+    const [ toastMsg, setToastMsg ] = useState('');
+    const [ toastDuration, setToastDuration ] = useState(3000);
+    const [ toastVisible, setToastVisible ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
 
     async function sendMail(e) {
+        setIsLoading(true);
         e.preventDefault();
         try {
             const res = await fetch(`${process.env.REACT_APP_API_URL}/sendmail`, {
@@ -17,19 +24,37 @@ function Contact() {
                 },
                 body: JSON.stringify({ name, email, subject, message })
             });
-    
+            // const res = {status: 200};
             if(res.status === 200) {
-                alert("Message Sent.");
+                showToast('Email message sent');
             } else if(res.status === 500) {
-                alert("Failed to send message");
+                showToast("Failed to send message");
             }
         } catch (err) {
-            alert(err);
+            showToast(err.message);
         }   
+        setIsLoading(false);
+    }
+
+    function showToast(msg, duration=3000) {
+        setToastMsg(msg);
+        setToastDuration(duration);
+        setToastVisible(true);
     }
 
     return (
         <div className='contact-wrapper'>
+            { isLoading ? 
+                <>
+                    <div className='backdrop'></div>
+                    <div className='spinner'>
+                        <RotatingLines width='100'/> 
+                    </div>
+                </>
+                : 
+                ''
+            }
+            <Toast msg={toastMsg} duration={toastDuration} visible={toastVisible} setToastVisible={setToastVisible}/>
             <h1 className='contact-header'>Contact Me</h1>
             <form className='contact-form' onSubmit={sendMail}>
                 <div className='name-email-wrapper'>
