@@ -13,6 +13,13 @@ function Contact() {
     const [ toastVisible, setToastVisible ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(false);
 
+    function resetContactForm() {
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+    }
+
     async function sendMail(e) {
         setIsLoading(true);
         e.preventDefault();
@@ -24,9 +31,9 @@ function Contact() {
                 },
                 body: JSON.stringify({ name, email, subject, message })
             });
-            // const res = {status: 200};
             if(res.status === 200) {
                 showToast('Email message sent');
+                resetContactForm();
             } else if(res.status === 500) {
                 showToast("Failed to send message");
             }
@@ -64,6 +71,7 @@ function Contact() {
                             type='text' 
                             id='name'
                             name='name'
+                            value={name}
                             placeholder='Your name'
                             required
                             onChange={(e) => setName(e.target.value)}
@@ -76,6 +84,7 @@ function Contact() {
                             type='text' 
                             id='email'
                             name='email'
+                            value={email}
                             placeholder='Your email'
                             required
                             onChange={(e) => setEmail(e.target.value)}
@@ -89,6 +98,7 @@ function Contact() {
                         type='text'
                         id='subject'
                         name='subject'
+                        value={subject}
                         placeholder='Subject'
                         required
                         onChange={(e) => setSubject(e.target.value)}
@@ -100,6 +110,7 @@ function Contact() {
                     <textarea
                         id='message'
                         name='message'
+                        value={message}
                         placeholder='Your message...'
                         required
                         onChange={(e) => setMessage(e.target.value)}
