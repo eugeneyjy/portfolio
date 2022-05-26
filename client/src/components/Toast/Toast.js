@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const FadeIn = keyframes`
     from {top: -100px; opacity: 0;}
