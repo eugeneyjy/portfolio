@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeTypeWriterInfo } from '../../redux/actions';
+import { getTypeWriterInfo } from '../../redux/selectors';
 import './Home.css';
 
 function Home() {
@@ -7,10 +10,12 @@ function Home() {
                         'Please consider contact me if there is any vacancy that fit with my knowledge and skills. I\'m looking to start my career as a FullStack Developer or Backend Developer.'
                         ], []);
     const paragraphLines = contentText.length;
-    const [ typeWriterText, setTypeWriterText ] = useState('');
-    const [ currTextLength, setCurrTextLength ] = useState(0);
-    const [ lineCount, setLineCount ] = useState(0);
+    const typeWriterInfo = useSelector(getTypeWriterInfo);
+    const [ typeWriterText, setTypeWriterText ] = useState(typeWriterInfo.text);
+    const [ currTextLength, setCurrTextLength ] = useState(typeWriterInfo.textLength);
+    const [ lineCount, setLineCount ] = useState(typeWriterInfo.lineCount);
     const [ blink, setBlink ] = useState(true);
+    const dispatch = useDispatch();
 
     // typewriter effect
     useEffect(() => {
@@ -26,6 +31,11 @@ function Home() {
                     setTypeWriterText(prevText => prevText+contentText[lineCount][currTextLength]);
                     setCurrTextLength(currTextLength+1);
                 }
+                dispatch(storeTypeWriterInfo({
+                    text: typeWriterText,
+                    textLength: currTextLength,
+                    lineCount: lineCount
+                }));
             }
         }, parseInt(Math.random() * (50-30) + 30));
         return () => clearTimeout(timeout1);
