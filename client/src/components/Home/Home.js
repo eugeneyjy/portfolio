@@ -39,7 +39,7 @@ function Home() {
             }
         }, parseInt(Math.random() * (50-30) + 30));
         return () => clearTimeout(timeout1);
-    }, [lineCount, currTextLength, paragraphLines, contentText]); 
+    }, [lineCount, currTextLength, paragraphLines, contentText, dispatch, typeWriterText]); 
 
     useEffect(() =>{
         if(lineCount < paragraphLines) {
