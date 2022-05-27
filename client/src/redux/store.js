@@ -5,7 +5,7 @@ import projectsReducer from './reducer';
 const store = createStore(projectsReducer);
 
 store.subscribe(() => {
-    console.log(store.getState());
+    // console.log(store.getState());
 });
 
 export default store;
